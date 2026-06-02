@@ -145,10 +145,6 @@
     },
     {
       "source": "neuro",
-      "target": "jmis2"
-    },
-    {
-      "source": "neuro",
       "target": "cd"
     },
     {
@@ -162,10 +158,6 @@
     {
       "source": "creat",
       "target": "jmis1"
-    },
-    {
-      "source": "creat",
-      "target": "jmis2"
     },
     {
       "source": "creat",
@@ -203,11 +195,6 @@
     {
       "source": "icis22",
       "target": "jmis1",
-      "prog": true
-    },
-    {
-      "source": "icis20",
-      "target": "jmis2",
       "prog": true
     },
     {

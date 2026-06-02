@@ -1,0 +1,278 @@
+{
+  "nodes": [
+    {
+      "id": "neuro",
+      "type": "area",
+      "r": 46,
+      "label": "Neurosymbolic AI\n& Knowledge\nRepresentation",
+      "desc": "Integrating symbolic AI with deep learning. Building knowledge graphs from institutional knowledge using Conceptual Dependency Theory."
+    },
+    {
+      "id": "sysdy",
+      "type": "area",
+      "r": 46,
+      "label": "System Dynamics\n& Decision\nSupport",
+      "desc": "Automated CLD-to-Stock-and-Flow pipelines. Applied to national food security and industrial operations management."
+    },
+    {
+      "id": "creat",
+      "type": "area",
+      "r": 46,
+      "label": "Combinatorial\nCreativity\n& Networks",
+      "desc": "Mapping how ideas combine and recombine across knowledge domains. Grounded in network theory and crowdsourcing research."
+    },
+    {
+      "id": "diss",
+      "type": "paper",
+      "r": 28,
+      "label": "Combinatorial\nCreativity\n(Diss. 2024)",
+      "desc": "PhD dissertation: Knowledge graphs and idea generation in crowdsourcing innovation. Singapore Management University, 2024."
+    },
+    {
+      "id": "jmis1",
+      "type": "paper",
+      "r": 22,
+      "label": "New Idea\nSuccess\n(JMIS R&R)",
+      "desc": "New Idea Success in Online Platforms: A Knowledge Recombination Perspective. Under review at JMIS (Revise & Resubmit)."
+    },
+    {
+      "id": "icis22",
+      "type": "paper",
+      "r": 18,
+      "label": "Citation Network\nEmbeddedness\n(ICIS 2022)",
+      "desc": "Examining the Impact of Citation Network Embeddedness on Crowdsourced Idea Refinement. ICIS 2022."
+    },
+    {
+      "id": "icis20",
+      "type": "paper",
+      "r": 18,
+      "label": "Semantic &\nNetwork Evol.\n(ICIS 2020)",
+      "desc": "Semantic and Network Evolution in Crowdsourced Idea Refinement. ICIS 2020."
+    },
+    {
+      "id": "spatial",
+      "type": "paper",
+      "r": 16,
+      "label": "Space &\nViolence\n(ACM 2018)",
+      "desc": "Is There Space for Violence: A Data-driven Approach to Spatial-Temporal Conflict. ACM SIGSPATIAL 2018."
+    },
+    {
+      "id": "bri",
+      "type": "paper",
+      "r": 16,
+      "label": "Belt & Road\n(Global Asia\n2018)",
+      "desc": "Chinese Dream, Global Ambition: Beijing Belt and Road Initiative. Global Asia, 13(3), 2018."
+    },
+    {
+      "id": "food",
+      "type": "project",
+      "r": 26,
+      "label": "Food Security\nSimulation\n(IMCFS)",
+      "desc": "System Dynamics framework modelling national food availability and supply-chain resilience for the Singapore Interministerial Committee on Food Security."
+    },
+    {
+      "id": "japfa",
+      "type": "project",
+      "r": 22,
+      "label": "Livestock Mgmt\nModel\n(JAPFA)",
+      "desc": "Operational System Dynamics model for pig farm management. Also included recommender system for B2B commercial performance."
+    },
+    {
+      "id": "nyp",
+      "type": "project",
+      "r": 18,
+      "label": "Enrolment\nAnalytics\n(NYP Power BI)",
+      "desc": "Power BI dashboards for NYP Communications and Outreach: tracking secondary school interest in diploma programmes to support resource allocation decisions."
+    },
+    {
+      "id": "rsis",
+      "type": "project",
+      "r": 18,
+      "label": "Policy Research\n(RSIS NTU\n2015-2019)",
+      "desc": "Associate Research Fellow. Horizon scanning on emerging tech, digital economy, and regional security policy. Produced 7+ policy papers."
+    },
+    {
+      "id": "cd",
+      "type": "concept",
+      "r": 20,
+      "label": "Conceptual\nDependency\nTheory",
+      "desc": "Schank CDT: formal framework for representing meaning in natural language. Core methodology for knowledge structuring in neurosymbolic AI work."
+    },
+    {
+      "id": "crowdsrc",
+      "type": "concept",
+      "r": 18,
+      "label": "Crowdsourcing\nPlatforms",
+      "desc": "Online innovation platforms as research sites for studying idea generation, refinement, and collaborative knowledge creation."
+    },
+    {
+      "id": "netw",
+      "type": "concept",
+      "r": 18,
+      "label": "Network\nTheory",
+      "desc": "Graph-theoretic analysis of knowledge and idea networks. Underpins both creativity research and knowledge graph architecture work."
+    },
+    {
+      "id": "simul",
+      "type": "concept",
+      "r": 20,
+      "label": "System Dynamics\nModelling",
+      "desc": "Stock-and-Flow simulation methodology enabling formal, computable representations of qualitative expert causal models."
+    },
+    {
+      "id": "geo",
+      "type": "concept",
+      "r": 16,
+      "label": "Geospatial\nAnalysis",
+      "desc": "Spatial-temporal data analysis applied to conflict pattern research during RSIS fellowship."
+    },
+    {
+      "id": "policy",
+      "type": "concept",
+      "r": 16,
+      "label": "Policy &\nHorizon\nScanning",
+      "desc": "Anticipatory policy analysis: identifying emerging technology trends and their societal and security implications."
+    }
+  ],
+  "links": [
+    {
+      "source": "neuro",
+      "target": "diss"
+    },
+    {
+      "source": "neuro",
+      "target": "jmis1"
+    },
+    {
+      "source": "neuro",
+      "target": "jmis2"
+    },
+    {
+      "source": "neuro",
+      "target": "cd"
+    },
+    {
+      "source": "neuro",
+      "target": "netw"
+    },
+    {
+      "source": "creat",
+      "target": "diss"
+    },
+    {
+      "source": "creat",
+      "target": "jmis1"
+    },
+    {
+      "source": "creat",
+      "target": "jmis2"
+    },
+    {
+      "source": "creat",
+      "target": "icis22"
+    },
+    {
+      "source": "creat",
+      "target": "icis20"
+    },
+    {
+      "source": "creat",
+      "target": "crowdsrc"
+    },
+    {
+      "source": "sysdy",
+      "target": "food"
+    },
+    {
+      "source": "sysdy",
+      "target": "japfa"
+    },
+    {
+      "source": "sysdy",
+      "target": "simul"
+    },
+    {
+      "source": "sysdy",
+      "target": "nyp"
+    },
+    {
+      "source": "icis20",
+      "target": "icis22",
+      "prog": true
+    },
+    {
+      "source": "icis22",
+      "target": "jmis1",
+      "prog": true
+    },
+    {
+      "source": "icis20",
+      "target": "jmis2",
+      "prog": true
+    },
+    {
+      "source": "diss",
+      "target": "cd"
+    },
+    {
+      "source": "diss",
+      "target": "crowdsrc"
+    },
+    {
+      "source": "diss",
+      "target": "netw"
+    },
+    {
+      "source": "icis20",
+      "target": "crowdsrc"
+    },
+    {
+      "source": "icis22",
+      "target": "crowdsrc"
+    },
+    {
+      "source": "food",
+      "target": "simul"
+    },
+    {
+      "source": "japfa",
+      "target": "simul"
+    },
+    {
+      "source": "spatial",
+      "target": "geo"
+    },
+    {
+      "source": "bri",
+      "target": "policy"
+    },
+    {
+      "source": "rsis",
+      "target": "bri"
+    },
+    {
+      "source": "rsis",
+      "target": "spatial"
+    },
+    {
+      "source": "rsis",
+      "target": "policy"
+    },
+    {
+      "source": "netw",
+      "target": "jmis1"
+    },
+    {
+      "source": "cd",
+      "target": "jmis1"
+    },
+    {
+      "source": "netw",
+      "target": "diss"
+    },
+    {
+      "source": "policy",
+      "target": "rsis"
+    }
+  ]
+}

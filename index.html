@@ -1,14 +1,1371 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>A Very Simple Page</title>
-  </head>
-  <body>
-    <h1>Welcome to my Website</h1>
-    <hr>
-    <h2>About Me</h2>
-    <p>I love monkeys</p>
-    
-    <img src = "https://github.com/mackzwv/vincent.github.io/blob/main/gorilla_handsome.png" />
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Vincent Z.W. Mack</title>
+  <meta name="description"
+    content="Personal academic webpage of Dr. Vincent Z.W. Mack, Lecturer at Nanyang Polytechnic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --navy: #0f2344;
+      --navy-mid: #1a3a6e;
+      --accent: #2563eb;
+      --teal: #0891b2;
+      --bg: #f8fafc;
+      --surface: #fff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --light: #94a3b8;
+      --tag-bg: #eff6ff;
+      --tag-fg: #1d4ed8;
+      --mono: 'JetBrains Mono', monospace;
+      --px: clamp(16px, 4vw, 32px);
+      --maxw: 900px;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: clamp(14px, 2.2vw, 15.5px);
+      line-height: 1.7
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e4d8c 100%);
+      color: #fff;
+      padding: clamp(32px, 6vw, 60px) var(--px) clamp(28px, 5vw, 52px);
+      position: relative;
+      overflow: hidden
+    }
+
+    #net-canvas {
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      pointer-events: none;
+      width: 100%;
+      height: 100%
+    }
+
+    .hdr {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 0 auto
+    }
+
+    .hdr-name {
+      font-family: 'Lora', serif;
+      font-size: clamp(22px, 5vw, 38px);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      margin-bottom: 8px
+    }
+
+    .hdr-title {
+      font-size: clamp(12px, 2vw, 14px);
+      color: #93c5fd;
+      margin-bottom: 2px
+    }
+
+    .hdr-inst {
+      font-size: clamp(11px, 1.8vw, 13px);
+      color: #bfdbfe;
+      margin-bottom: 20px
+    }
+
+    .hdr-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .hdr-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 20px;
+      color: #e0f2fe;
+      text-decoration: none;
+      font-size: clamp(11px, 1.8vw, 13px);
+      font-weight: 500;
+      background: rgba(255, 255, 255, .06);
+      min-height: 44px;
+      transition: background .2s, border-color .2s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation
+    }
+
+    .hdr-link:hover {
+      background: rgba(255, 255, 255, .16);
+      border-color: rgba(255, 255, 255, .5)
+    }
+
+    .nav-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .06)
+    }
+
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--px);
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none
+    }
+
+    .nav-tab {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 18px;
+      min-height: 48px;
+      font-size: clamp(13px, 2vw, 14px);
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      white-space: nowrap;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: color .18s, border-color .18s
+    }
+
+    .nav-tab:hover {
+      color: var(--accent)
+    }
+
+    .nav-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent)
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 44px) var(--px) 80px
+    }
+
+    .tab-pane {
+      display: none
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeUp .22s ease
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .sec {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin: 36px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .sec:first-child {
+      margin-top: 0
+    }
+
+    .r-stmt {
+      font-family: 'Lora', serif;
+      font-size: clamp(14.5px, 2.2vw, 16px);
+      line-height: 1.82;
+      border-left: 3px solid var(--accent);
+      padding-left: 18px
+    }
+
+    .r-stmt p+p {
+      margin-top: 12px
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 14px
+    }
+
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      transition: box-shadow .2s, border-color .2s
+    }
+
+    .pillar:hover {
+      box-shadow: 0 4px 16px rgba(37, 99, 235, .08);
+      border-color: #bfdbfe
+    }
+
+    .p-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 6px
+    }
+
+    .p-title {
+      font-size: clamp(13px, 2vw, 14.5px);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.35
+    }
+
+    .p-body {
+      font-size: clamp(12.5px, 1.9vw, 13.5px);
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .p-tags {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-fg);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px
+    }
+
+    .proj {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 18px);
+      margin-bottom: 10px
+    }
+
+    .proj-title {
+      font-size: clamp(13px, 2vw, 14px);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 3px
+    }
+
+    .proj-role {
+      font-size: clamp(11.5px, 1.8vw, 12.5px);
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px
+    }
+
+    .proj-body {
+      font-size: clamp(12px, 1.8vw, 13.5px);
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .proj-body ul {
+      margin-top: 6px;
+      padding-left: 18px
+    }
+
+    .proj-body li {
+      margin-bottom: 3px
+    }
+
+    .pub-grp {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--light);
+      margin: 24px 0 10px
+    }
+
+    .pub-grp:first-child {
+      margin-top: 0
+    }
+
+    .pub {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(12px, 2.5vw, 18px) clamp(14px, 3vw, 20px);
+      margin-bottom: 10px;
+      transition: box-shadow .2s
+    }
+
+    .pub:hover {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .07)
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 7px
+    }
+
+    .b-rr {
+      background: #fef9c3;
+      color: #854d0e
+    }
+
+    .b-ur {
+      background: #f0fdf4;
+      color: #166534
+    }
+
+    .b-pub {
+      background: #f0f9ff;
+      color: #0369a1
+    }
+
+    .b-conf {
+      background: #faf5ff;
+      color: #6b21a8
+    }
+
+    .b-pol {
+      background: #fff7ed;
+      color: #9a3412
+    }
+
+    .b-prac {
+      background: #f0fdf4;
+      color: #065f46
+    }
+
+    .pub-title {
+      font-size: clamp(13px, 2vw, 14.5px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 4px
+    }
+
+    .pub-authors {
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--muted);
+      margin-bottom: 2px
+    }
+
+    .pub-venue {
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--muted);
+      font-style: italic
+    }
+
+    .pub-venue strong {
+      font-style: normal;
+      font-weight: 600;
+      color: #475569
+    }
+
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      min-height: 32px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation
+    }
+
+    .pub-link:hover {
+      color: var(--navy)
+    }
+
+    .diss {
+      background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: clamp(16px, 3vw, 22px) clamp(16px, 3vw, 24px)
+    }
+
+    .diss .pub-title {
+      font-size: clamp(13.5px, 2vw, 15.5px);
+      color: var(--navy-mid)
+    }
+
+    .diss-abs {
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: #475569;
+      line-height: 1.65;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #bfdbfe
+    }
+
+    .t-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 18px);
+      margin-bottom: 10px
+    }
+
+    .t-title {
+      font-size: clamp(13px, 2vw, 14px);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px
+    }
+
+    .t-body {
+      font-size: clamp(12px, 1.8vw, 13.5px);
+      color: var(--muted);
+      line-height: 1.55
+    }
+
+    .mod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr));
+      gap: 8px
+    }
+
+    .mod-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--text);
+      font-weight: 500
+    }
+
+    .exp {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: clamp(14px, 3vw, 18px) clamp(14px, 3vw, 20px);
+      margin-bottom: 12px
+    }
+
+    .exp-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 5px
+    }
+
+    .exp-org {
+      font-size: clamp(13px, 2vw, 14px);
+      font-weight: 700;
+      color: var(--navy)
+    }
+
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap
+    }
+
+    .exp-role {
+      font-size: clamp(12px, 1.8vw, 13px);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 6px
+    }
+
+    .exp-body {
+      font-size: clamp(12.5px, 1.9vw, 13.5px);
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .exp-body ul {
+      margin-top: 6px;
+      padding-left: 18px
+    }
+
+    .exp-body li {
+      margin-bottom: 3px
+    }
+
+    .edu-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px clamp(14px, 3vw, 20px)
+    }
+
+    .edu-row {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .edu-row:last-child {
+      border-bottom: none
+    }
+
+    .edu-yr {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--light);
+      min-width: 38px;
+      padding-top: 2px
+    }
+
+    .edu-deg {
+      font-size: clamp(13px, 2vw, 14px);
+      font-weight: 600;
+      color: var(--navy)
+    }
+
+    .edu-inst {
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--muted)
+    }
+
+    .edu-note {
+      font-size: 12px;
+      color: var(--teal);
+      margin-top: 2px;
+      font-style: italic
+    }
+
+    #graph-wrap {
+      background: #0a0a0f;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative
+    }
+
+    #graph-svg {
+      display: block;
+      width: 100%;
+      cursor: grab
+    }
+
+    #graph-svg:active {
+      cursor: grabbing
+    }
+
+    .graph-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: #0a0a0f;
+      border: 1px solid #1e293b;
+      border-radius: 8px
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #94a3b8
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .kg-intro {
+      font-size: clamp(13px, 2vw, 14px);
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px
+    }
+
+    #g-tooltip {
+      position: fixed;
+      z-index: 999;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      max-width: 220px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .25)
+    }
+
+    #g-tooltip.visible {
+      opacity: 1
+    }
+
+    #g-tooltip .tt-title {
+      font-weight: 600;
+      margin-bottom: 3px;
+      font-size: 13px
+    }
+
+    #g-tooltip .tt-type {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: #93c5fd;
+      margin-bottom: 5px
+    }
+
+    #g-tooltip .tt-desc {
+      color: #cbd5e1;
+      font-size: 12px
+    }
+
+    .graph-hint {
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 8px
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <canvas id="net-canvas" aria-hidden="true"></canvas>
+    <div class="hdr">
+      <div class="hdr-name">Dr. Vincent Z.W. Mack</div>
+      <div class="hdr-title">Lecturer, School of Information Technology &nbsp;&middot;&nbsp; Nanyang Polytechnic</div>
+      <div class="hdr-inst">Ph.D. Information Systems Management &nbsp;&middot;&nbsp; Singapore Management University
+      </div>
+      <nav class="hdr-links" aria-label="Contact and profiles">
+        <a class="hdr-link" href="mailto:vincent_mack@nyp.edu.sg"><svg width="13" height="13" aria-hidden="true"
+            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="M3 7l9 6 9-6" />
+          </svg>Email</a>
+        <a class="hdr-link" href="https://www.linkedin.com/in/vincent-mack-phd-50897831/" target="_blank"
+          rel="noopener noreferrer"><svg width="13" height="13" aria-hidden="true" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>LinkedIn</a>
+        <a class="hdr-link" href="https://scholar.google.com/citations?user=MOvF2O4AAAAJ&hl=en" target="_blank"
+          rel="noopener noreferrer"><svg width="13" height="13" aria-hidden="true" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+          </svg>Scholar</a>
+        <a class="hdr-link" href="https://github.com/mackzwv" target="_blank" rel="noopener noreferrer"><svg width="13"
+            height="13" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+          </svg>GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-bar">
+    <div class="nav-inner" role="tablist" aria-label="Page sections">
+      <a class="nav-tab active" href="#" data-tab="research" role="tab" aria-selected="true"
+        aria-controls="research">Research</a>
+      <a class="nav-tab" href="#" data-tab="publications" role="tab" aria-selected="false"
+        aria-controls="publications">Publications</a>
+      <a class="nav-tab" href="#" data-tab="network" role="tab" aria-selected="false" aria-controls="network">Knowledge
+        Graph</a>
+      <a class="nav-tab" href="#" data-tab="teaching" role="tab" aria-selected="false"
+        aria-controls="teaching">Teaching</a>
+      <a class="nav-tab" href="#" data-tab="experience" role="tab" aria-selected="false"
+        aria-controls="experience">Experience</a>
+    </div>
+  </div>
+  <main>
+    <section id="research" class="tab-pane active" role="tabpanel">
+      <div class="sec">Research Overview</div>
+      <div class="r-stmt">
+        <p>My research addresses a practical problem at the core of AI-assisted decision making: the tacit, contextual
+          knowledge that experienced practitioners rely on is rarely in a form that AI systems can access or reason
+          over. I develop computational methods that make this knowledge explicit, structured, and usable &#8212; so
+          that AI systems can support complex decisions in a way that is transparent and traceable rather than opaque.
+        </p>
+        <p>This work spans three connected strands. The first concerns <strong>knowledge representation</strong>:
+          drawing on Schank&#8217;s Conceptual Dependency Theory and modern graph database architectures, I build
+          rule-based methods to convert unstructured institutional knowledge into symbolic knowledge graphs that ground
+          generative AI outputs in verified domain knowledge. My doctoral research demonstrated this approach at scale,
+          showing how the structural and semantic properties of knowledge graphs shape information retrieval and idea
+          generation &#8212; with direct implications for AI systems intended to support knowledge-intensive decisions.
+        </p>
+        <p>The second strand concerns <strong>decision support under systemic risk</strong>: I develop automated
+          pipelines that translate qualitative expert models &#8212; specifically Causal Loop Diagrams &#8212; into
+          quantitative, executable Stock and Flow simulations, making expert judgment formally computable. This approach
+          was applied in two institutional deployments: a national food security simulation for the <strong>Singapore
+            Interministerial Committee on Food Security</strong>, modelling supply-chain resilience under geopolitical
+          and climate stress scenarios; and an operational livestock management model for <strong>JAPFA</strong>, a
+          multinational agribusiness.</p>
+        <p>The third strand investigates <strong>how concepts combine and recombine across knowledge domains</strong>
+          &#8212; relevant to AI systems that need to surface non-obvious connections to support strategic and creative
+          decision making.</p>
+        <p>Across these strands, a consistent concern is explainability: decision makers in public sector and enterprise
+          contexts require AI outputs they can interrogate and justify, not black-box recommendations. My doctoral
+          research was funded by the A*STAR Computing and Information Science (ACIS) Scholarship.</p>
+      </div>
+      <div class="sec">Research Areas</div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="p-num">01</div>
+          <div class="p-title">Neurosymbolic AI &amp; Knowledge Representation</div>
+          <div class="p-body">Integrating symbolic reasoning with connectionist deep learning to build explainable,
+            audit-ready AI systems. Extending classical AI paradigms (e.g., Conceptual Dependency Theory) into vector
+            space and LLM frameworks to convert unstructured institutional knowledge into structured knowledge graphs.
+            Preparing a grant proposal for MOE TRF on AI-assisted knowledge management systems.</div>
+          <div class="p-tags"><span class="tag">XAI</span><span class="tag">Knowledge Graphs</span><span
+              class="tag">NLP</span><span class="tag">MOE TRF</span></div>
+        </div>
+        <div class="pillar">
+          <div class="p-num">02</div>
+          <div class="p-title">Intelligent System Dynamics &amp; Decision Support</div>
+          <div class="p-body">Developing automated pipelines that use generative models to convert qualitative systemic
+            risks into mathematically executable simulations. Applied to national food security macro-simulations for
+            government and operational supply-chain models for industry.</div>
+          <div class="p-tags"><span class="tag">System Dynamics</span><span class="tag">CLD</span><span
+              class="tag">Stock &amp; Flow</span><span class="tag">Smart Nation</span></div>
+        </div>
+        <div class="pillar">
+          <div class="p-num">03</div>
+          <div class="p-title">Combinatorial Creativity &amp; Network Theory of Ideas</div>
+          <div class="p-body">Mapping conceptual networks to support and augment human creative ideation through
+            computational means. Investigating how concepts connect and evolve within institutional environments to
+            support structured innovation.</div>
+          <div class="p-tags"><span class="tag">Network Theory</span><span class="tag">Crowdsourcing</span><span
+              class="tag">Innovation</span><span class="tag">EdTech</span></div>
+        </div>
+      </div>
+      <div class="sec">Applied Research &amp; Decision Support Projects</div>
+      <div class="pub-grp">Institutional Decision Support</div>
+      <div class="proj">
+        <div class="proj-title">Nanyang Polytechnic &#8212; Communications and Outreach Department</div>
+        <div class="proj-role">Developer &#8212; Enrolment Analytics Dashboard</div>
+        <div class="proj-body">Designed and deployed a suite of Power BI dashboards to monitor secondary school interest
+          in NYP diploma programmes. The dashboards enable the Communications and Outreach team to track prospective
+          student engagement across schools and programmes, and support resource and manpower allocation decisions for
+          outreach and marketing activities.</div>
+      </div>
+      <div class="pub-grp">Industrial Systems &amp; Government Consultancies</div>
+      <div class="proj">
+        <div class="proj-title">Interministerial Committee on Food Security (Singapore)</div>
+        <div class="proj-role">Project Developer &#8212; System Dynamics Modelling</div>
+        <div class="proj-body">Developed a System Dynamics simulation framework to model national food availability,
+          supply-chain resilience, and import shocks under geopolitical and climate-related stress scenarios.</div>
+      </div>
+      <div class="proj">
+        <div class="proj-title">JAPFA Ltd.</div>
+        <div class="proj-role">Lead Data Scientist &amp; Systems Architect</div>
+        <div class="proj-body">
+          <ul>
+            <li>Built an operational System Dynamics model for commercial pig farm management to optimise yield,
+              lifecycle efficiency, and biosecurity risk management.</li>
+            <li>Conducted enterprise-wide correlational analysis and developed a production-grade recommender system for
+              commercial B2B performance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="publications" class="tab-pane" role="tabpanel">
+      <div class="pub-grp">Journal Articles &mdash; Under Review</div>
+      <div class="pub">
+        <span class="badge b-rr">Revise &amp; Resubmit</span>
+        <div class="pub-title">New Idea Success in Online Platforms: A Knowledge Recombination Perspective</div>
+        <div class="pub-authors">Mack, V.Z., Zhou, Y.M., &amp; Tang, Q.</div>
+        <div class="pub-venue"><strong>Journal of Management Information Systems</strong></div>
+      </div>
+
+      <div class="pub-grp">Journal Articles &mdash; Published</div>
+      <div class="pub">
+        <span class="badge b-pub">Published</span>
+        <div class="pub-title">&#8216;Chinese Dream,&#8217; Global Ambition: Beijing&#8217;s Belt and Road Initiative
+        </div>
+        <div class="pub-authors">Lim, C.H., &amp; Mack, V.Z.W.</div>
+        <div class="pub-venue"><strong>Global Asia,</strong> 13(3), 62&#8211;71. (2018)</div>
+        <a class="pub-link"
+          href="https://www.globalasia.org/v13no3/feature/chinese-dream-global-ambition-beijings-belt-and-road-initiative_christopher-h-limvincent-mack-zhi-wei"
+          target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+      </div>
+
+      <div class="pub-grp">Refereed Conference Proceedings</div>
+      <div class="pub">
+        <span class="badge b-conf">ICIS 2022</span>
+        <div class="pub-title">Examining the Impact of Citation Network Embeddedness on Crowdsourced Idea Refinement:
+          The Moderating Role of Idea Breadth and Depth</div>
+        <div class="pub-authors">Mack, V.Z., Zhou, Y.M., &amp; Tang, Q.</div>
+        <div class="pub-venue"><strong>Proceedings of the International Conference on Information Systems (ICIS
+            2022)</strong></div>
+      </div>
+      <div class="pub">
+        <span class="badge b-conf">ICIS 2020</span>
+        <div class="pub-title">Semantic and Network Evolution in Crowdsourced Idea Refinement</div>
+        <div class="pub-authors">Mack, V.Z., &amp; Tang, Q.</div>
+        <div class="pub-venue"><strong>Proceedings of the International Conference on Information Systems (ICIS
+            2020)</strong> &mdash; Social Media and Digital Collaborations track</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-conf">ACM SIGSPATIAL 2018</span>
+        <div class="pub-title">Is There Space for Violence: A Data-driven Approach to the Exploration of
+          Spatial-Temporal Dimensions of Conflict</div>
+        <div class="pub-authors">Mack, V.Z.W., &amp; Kam, T.S.</div>
+        <div class="pub-venue"><strong>Proceedings of the 2nd ACM SIGSPATIAL Workshop on Geospatial Humanities.</strong>
+          Seattle, WA: ACM.</div>
+      </div>
+
+      <div class="pub-grp">Doctoral Dissertation</div>
+      <div class="pub diss">
+        <div class="pub-title">Combinatorial creativity: Knowledge graphs and idea generation in crowdsourcing
+          innovation</div>
+        <div class="pub-authors">Mack, V.Z.W. (2024) &mdash; Supervised by Prof. Tang Qian</div>
+        <div class="pub-venue"><strong>Singapore Management University</strong></div>
+        <div class="diss-abs">Examines how tacit institutional knowledge can be structured into knowledge graphs using
+          Conceptual Dependency Theory, and investigates how the structural and semantic properties of these graphs
+          shape idea generation and refinement in crowdsourcing environments.</div>
+        <a class="pub-link" href="https://ink.library.smu.edu.sg/etd_coll/615/" target="_blank"
+          rel="noopener noreferrer">Access via SMU INK &rarr;</a>
+      </div>
+
+      <div class="pub-grp">Policy Papers &amp; Commentaries (RSIS, NTU)</div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">A Prolegomenary on the Digital Economy: &#8220;Digital Hurricane&#8221; Hits ASEAN</div>
+        <div class="pub-authors">Lim, C.H., Mack, V.Z.W., &amp; Tseng, H.Z. (2019)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">How Emerging Global Trends May Affect Labour Migration in ASEAN</div>
+        <div class="pub-authors">Mack, V.Z.W., &amp; Lim, C.H. (2017)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+        <a class="pub-link"
+          href="https://www.rsis.edu.sg/rsis-publication/nts/how-emerging-global-trends-may-affect-labour-migration-in-asean/"
+          target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">Economic Security Challenges Facing Singapore &#8211; 2017 and Beyond</div>
+        <div class="pub-authors">Lim, C.H., &amp; Mack, V.Z.W. (2017)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">Antimicrobial Resistance (AMR)-Superbug: Time for ASEAN Collective Action</div>
+        <div class="pub-authors">Lim, C.H., Schlundt, J., &amp; Mack, V.Z.W. (2018)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">3D Printing vs Gun Control: Navigating the Paradox</div>
+        <div class="pub-authors">Mack, V.Z.W., &amp; Tan, M.H. (2018)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">Shared Economy Business: Fixing Its &#8220;Genetic Disorder&#8221;</div>
+        <div class="pub-authors">Mack, V.Z.W., &amp; Lim, C.H.K. (2018)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+      <div class="pub">
+        <span class="badge b-pol">Policy Paper</span>
+        <div class="pub-title">Science, Technology and Human Security: Getting Singapore Smart City-Ready</div>
+        <div class="pub-authors">Lim, C.H., &amp; Mack, V.Z.W. (2017)</div>
+        <div class="pub-venue">S. Rajaratnam School of International Studies, NTU</div>
+      </div>
+
+      <div class="pub-grp">Practitioner Publications</div>
+      <div class="pub">
+        <span class="badge b-prac">Practitioner</span>
+        <div class="pub-title">Harnessing AI for Creative Ideation &amp; Combinatorial Systems</div>
+        <div class="pub-authors">Mack, V.Z.W. (2025)</div>
+        <div class="pub-venue"><strong>AiSP Newsletter,</strong> April 2025. Association of Information Security
+          Professionals.</div>
+        <a class="pub-link"
+          href="https://www.aisp.sg/document/newsletter/AISP%20Newsletter%202025/AiSP_Newsletter_2025%20April_v1.pdf"
+          target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+      </div>
+    </section>
+
+    <section id="network" class="tab-pane" role="tabpanel">
+      <div class="sec">Knowledge Graph of My Research</div>
+      <p class="kg-intro">This knowledge graph maps the conceptual structure of my research portfolio. Each node
+        represents a <strong style="color:var(--navy)">research area</strong> (navy), <strong
+          style="color:#7c3aed">publication</strong> (purple), <strong style="color:var(--teal)">applied
+          deployment</strong> (teal), or <strong style="color:#d97706">core methodology</strong> (amber). Edges trace
+        intellectual and methodological relationships; dashed arrows mark the evolution of ideas from conference papers
+        into journal submissions. Drag nodes to reorganise the layout. Tap or hover a node to read about the work it
+        represents.</p>
+      <div id="graph-wrap">
+        <svg id="graph-svg" aria-label="Interactive research knowledge graph"></svg>
+      </div>
+      <div class="graph-legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#2563eb"></span>Research Area</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>Publication</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#0891b2"></span>Applied Project</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#d97706"></span>Methodology / Concept</div>
+      </div>
+      <p class="graph-hint">Drag to move &nbsp;&middot;&nbsp; Scroll to zoom &nbsp;&middot;&nbsp; Tap a node to
+        highlight connections</p>
+    </section>
+
+    <section id="teaching" class="tab-pane" role="tabpanel">
+      <div class="sec">Certification</div>
+      <div class="pub">
+        <div style="font-size:clamp(12.5px,1.9vw,13.5px);color:var(--muted)">Certified Polytechnic Educator &mdash;
+          <strong style="color:var(--text)">Certificate in Teaching and Learning for Polytechnic Educators
+            (CTLPE)</strong>
+        </div>
+      </div>
+
+      <div class="sec">Continuing Education &amp; Training (CET)</div>
+      <div class="t-item">
+        <div class="t-title">GovTech Workshop</div>
+        <div class="t-body">Delivered <em>Engineering Data for Business Insights</em> &mdash; an advanced workshop for
+          public sector data engineers.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-title">SkillsFuture Career Transition Programme (SCTP)</div>
+        <div class="t-body">Instructor for the <em>Data Analytics and Applied AI</em> track.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-title">Curriculum Development &mdash; Advanced Data Management</div>
+        <div class="t-body">Developed curriculum and laboratory frameworks covering Apache Cassandra/DataStax, MongoDB,
+          Neo4j, and Vector Databases.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-title">Module Leadership</div>
+        <div class="t-body">Text Analytics &amp; Applications &nbsp;&middot;&nbsp; Applied Deep Learning
+          &nbsp;&middot;&nbsp; Data Journalism</div>
+      </div>
+      <div class="t-item">
+        <div class="t-title">Academic Taskforce</div>
+        <div class="t-body">Member of the inter-disciplinary workgroup developing a new combined Specialist Diploma
+          spanning the Schools of Design Media, Business, and Information Technology.</div>
+      </div>
+
+      <div class="sec">Pre-Employment Training (PET) Modules</div>
+      <div class="mod-grid">
+        <div class="mod-chip">Topic Modelling &amp; Sentiment Analysis</div>
+        <div class="mod-chip">Data Analysis &amp; Visualization</div>
+        <div class="mod-chip">Web Application Development</div>
+        <div class="mod-chip">Business Analytics Primer</div>
+        <div class="mod-chip">IT Essentials</div>
+      </div>
+    </section>
+
+    <section id="experience" class="tab-pane" role="tabpanel">
+      <div class="sec">Education</div>
+      <div class="edu-wrap">
+        <div class="edu-row">
+          <div class="edu-yr">2024</div>
+          <div>
+            <div class="edu-deg">Ph.D. in Information Systems Management</div>
+            <div class="edu-inst">Singapore Management University</div>
+            <div class="edu-note">Funded by the A*STAR Computing and Information Science (ACIS) Scholarship</div>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-yr">2019</div>
+          <div>
+            <div class="edu-deg">Master of IT in Business (Analytics)</div>
+            <div class="edu-inst">Singapore Management University</div>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-yr">2015</div>
+          <div>
+            <div class="edu-deg">M.Sc. in International Political Economy</div>
+            <div class="edu-inst">Nanyang Technological University</div>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-yr">2010</div>
+          <div>
+            <div class="edu-deg">Bachelor of Social Science in Sociology (Honours)</div>
+            <div class="edu-inst">National University of Singapore</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">Professional Experience</div>
+      <div class="exp">
+        <div class="exp-hdr">
+          <div class="exp-org">Nanyang Polytechnic</div>
+          <div class="exp-date">2024 &ndash; Present</div>
+        </div>
+        <div class="exp-role">Lecturer, School of Information Technology</div>
+        <div class="exp-body">Teaching and curriculum development across data analytics, AI, and information systems.
+          Module leader for Text Analytics, Applied Deep Learning, and Data Journalism. Active research in neurosymbolic
+          AI and knowledge representation.</div>
+      </div>
+      <div class="exp">
+        <div class="exp-hdr">
+          <div class="exp-org">S. Rajaratnam School of International Studies, NTU</div>
+          <div class="exp-date">2015 &ndash; 2019</div>
+        </div>
+        <div class="exp-role">Associate Research Fellow</div>
+        <div class="exp-body">
+          <ul>
+            <li>Conducted horizon scanning and policy research on emerging technologies, digital economy trends, and
+              their implications for regional security and governance.</li>
+            <li>Produced policy papers and commentaries on topics including ASEAN digital economy, antimicrobial
+              resistance, platform economics, and Singapore&#8217;s Smart City transition.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-hdr">
+          <div class="exp-org">Ministry of Social and Family Development, Singapore</div>
+          <div class="exp-date">2010 &ndash; 2012</div>
+        </div>
+        <div class="exp-role">Policy Officer / Policy Research Assistant</div>
+        <div class="exp-body">Policy research and administrative support in social and family policy development.</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="g-tooltip" role="tooltip">
+    <div id="tt-title" class="tt-title"></div>
+    <div id="tt-type" class="tt-type"></div>
+    <div id="tt-desc" class="tt-desc"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script>
+    // ── TAB SWITCHING (Safari-safe: anchor tags + click + preventDefault) ──
+    var tabs = document.querySelectorAll('.nav-tab');
+    var panes = document.querySelectorAll('.tab-pane');
+    var graphBuilt = false;
+    function activateTab(tab) {
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+        tabs[i].setAttribute('aria-selected', 'false');
+      }
+      for (var j = 0; j < panes.length; j++) panes[j].classList.remove('active');
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var target = document.getElementById(tab.getAttribute('data-tab'));
+      if (target) target.classList.add('active');
+      if (tab.getAttribute('data-tab') === 'network' && !graphBuilt) {
+        graphBuilt = true;
+        setTimeout(buildGraph, 60);
+      }
+    }
+    for (var k = 0; k < tabs.length; k++) {
+      tabs[k].addEventListener('click', function (e) {
+        e.preventDefault();
+        activateTab(this);
+      });
+    }
+
+    // ── HEADER CANVAS ANIMATION ──
+    (function () {
+      var canvas = document.getElementById('net-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, pts, active = true;
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+        pts = [];
+        var n = Math.min(40, Math.floor(W * H / 8000));
+        for (var i = 0; i < n; i++) {
+          pts.push({
+            x: Math.random() * W, y: Math.random() * H,
+            vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4
+          });
+        }
+      }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < pts.length; i++) {
+          var p = pts[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255,255,255,0.7)'; ctx.fill();
+          for (var j = i + 1; j < pts.length; j++) {
+            var q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 120) {
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = 'rgba(255,255,255,' + (1 - d / 120) * .25 + ')'; ctx.stroke();
+            }
+          }
+        }
+        if (active) requestAnimationFrame(draw);
+      }
+      resize(); draw();
+      window.addEventListener('resize', resize);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (e) {
+          active = e[0].isIntersecting;
+          if (active) requestAnimationFrame(draw);
+        }).observe(canvas);
+      }
+    })();
+
+    // ── D3 KNOWLEDGE GRAPH ──
+    function buildGraph() {
+      var wrap = document.getElementById('graph-wrap');
+      if (!wrap) return;
+      var W = wrap.clientWidth || 800;
+      var H = Math.max(480, Math.min(680, window.innerHeight * 0.68));
+      var mob = W < 600;
+      var svg = d3.select('#graph-svg').attr('viewBox', '0 0 ' + W + ' ' + H).attr('height', H);
+
+      var COLORS = { area: '#2563eb', paper: '#7c3aed', project: '#0891b2', concept: '#d97706' };
+
+      var nodes = [
+        { id: 'neuro', type: 'area', r: 46, label: 'Neurosymbolic AI\n& Knowledge\nRepresentation', desc: 'Integrating symbolic AI with deep learning. Building knowledge graphs from institutional knowledge using Conceptual Dependency Theory.' },
+        { id: 'sysdy', type: 'area', r: 46, label: 'System Dynamics\n& Decision\nSupport', desc: 'Automated CLD-to-Stock-and-Flow pipelines. Applied to national food security and industrial operations management.' },
+        { id: 'creat', type: 'area', r: 46, label: 'Combinatorial\nCreativity\n& Networks', desc: 'Mapping how ideas combine and recombine across knowledge domains. Grounded in network theory and crowdsourcing research.' },
+        { id: 'diss', type: 'paper', r: 28, label: 'Combinatorial\nCreativity\n(Diss. 2024)', desc: 'PhD dissertation: Knowledge graphs and idea generation in crowdsourcing innovation. Singapore Management University, 2024.' },
+        { id: 'jmis1', type: 'paper', r: 22, label: 'New Idea\nSuccess\n(JMIS R&R)', desc: 'New Idea Success in Online Platforms: A Knowledge Recombination Perspective. Under review at JMIS (Revise & Resubmit).' },
+        { id: 'jmis2', type: 'paper', r: 22, label: 'Combinatorial\nCreativity\n(JMIS U/R)', desc: 'Combinatorial Creativity in Online Platforms: A Knowledge Network Perspective. Under review at JMIS.' },
+        { id: 'icis22', type: 'paper', r: 18, label: 'Citation Network\nEmbeddedness\n(ICIS 2022)', desc: 'Examining the Impact of Citation Network Embeddedness on Crowdsourced Idea Refinement. ICIS 2022.' },
+        { id: 'icis20', type: 'paper', r: 18, label: 'Semantic &\nNetwork Evol.\n(ICIS 2020)', desc: 'Semantic and Network Evolution in Crowdsourced Idea Refinement. ICIS 2020.' },
+        { id: 'spatial', type: 'paper', r: 16, label: 'Space &\nViolence\n(ACM 2018)', desc: 'Is There Space for Violence: A Data-driven Approach to Spatial-Temporal Conflict. ACM SIGSPATIAL 2018.' },
+        { id: 'bri', type: 'paper', r: 16, label: 'Belt & Road\n(Global Asia\n2018)', desc: 'Chinese Dream, Global Ambition: Beijing Belt and Road Initiative. Global Asia, 13(3), 2018.' },
+        { id: 'food', type: 'project', r: 26, label: 'Food Security\nSimulation\n(IMCFS)', desc: 'System Dynamics framework modelling national food availability and supply-chain resilience for the Singapore Interministerial Committee on Food Security.' },
+        { id: 'japfa', type: 'project', r: 22, label: 'Livestock Mgmt\nModel\n(JAPFA)', desc: 'Operational System Dynamics model for pig farm management. Also included recommender system for B2B commercial performance.' },
+        { id: 'nyp', type: 'project', r: 18, label: 'Enrolment\nAnalytics\n(NYP Power BI)', desc: 'Power BI dashboards for NYP Communications and Outreach: tracking secondary school interest in diploma programmes to support resource allocation decisions.' },
+        { id: 'rsis', type: 'project', r: 18, label: 'Policy Research\n(RSIS NTU\n2015-2019)', desc: 'Associate Research Fellow. Horizon scanning on emerging tech, digital economy, and regional security policy. Produced 7+ policy papers.' },
+        { id: 'cd', type: 'concept', r: 20, label: 'Conceptual\nDependency\nTheory', desc: 'Schank CDT: formal framework for representing meaning in natural language. Core methodology for knowledge structuring in neurosymbolic AI work.' },
+        { id: 'crowdsrc', type: 'concept', r: 18, label: 'Crowdsourcing\nPlatforms', desc: 'Online innovation platforms as research sites for studying idea generation, refinement, and collaborative knowledge creation.' },
+        { id: 'netw', type: 'concept', r: 18, label: 'Network\nTheory', desc: 'Graph-theoretic analysis of knowledge and idea networks. Underpins both creativity research and knowledge graph architecture work.' },
+        { id: 'simul', type: 'concept', r: 20, label: 'System Dynamics\nModelling', desc: 'Stock-and-Flow simulation methodology enabling formal, computable representations of qualitative expert causal models.' },
+        { id: 'geo', type: 'concept', r: 16, label: 'Geospatial\nAnalysis', desc: 'Spatial-temporal data analysis applied to conflict pattern research during RSIS fellowship.' },
+        { id: 'policy', type: 'concept', r: 16, label: 'Policy &\nHorizon\nScanning', desc: 'Anticipatory policy analysis: identifying emerging technology trends and their societal and security implications.' }
+      ];
+
+      var links = [
+        { source: 'neuro', target: 'diss' },
+        { source: 'neuro', target: 'jmis1' },
+        { source: 'neuro', target: 'jmis2' },
+        { source: 'neuro', target: 'cd' },
+        { source: 'neuro', target: 'netw' },
+        { source: 'creat', target: 'diss' },
+        { source: 'creat', target: 'jmis1' },
+        { source: 'creat', target: 'jmis2' },
+        { source: 'creat', target: 'icis22' },
+        { source: 'creat', target: 'icis20' },
+        { source: 'creat', target: 'crowdsrc' },
+        { source: 'sysdy', target: 'food' },
+        { source: 'sysdy', target: 'japfa' },
+        { source: 'sysdy', target: 'simul' },
+        { source: 'sysdy', target: 'nyp' },
+        { source: 'icis20', target: 'icis22', prog: true },
+        { source: 'icis22', target: 'jmis1', prog: true },
+        { source: 'icis20', target: 'jmis2', prog: true },
+        { source: 'diss', target: 'cd' },
+        { source: 'diss', target: 'crowdsrc' },
+        { source: 'diss', target: 'netw' },
+        { source: 'icis20', target: 'crowdsrc' },
+        { source: 'icis22', target: 'crowdsrc' },
+        { source: 'food', target: 'simul' },
+        { source: 'japfa', target: 'simul' },
+        { source: 'spatial', target: 'geo' },
+        { source: 'bri', target: 'policy' },
+        { source: 'rsis', target: 'bri' },
+        { source: 'rsis', target: 'spatial' },
+        { source: 'rsis', target: 'policy' },
+        { source: 'netw', target: 'jmis1' },
+        { source: 'cd', target: 'jmis1' },
+        { source: 'netw', target: 'diss' },
+        { source: 'policy', target: 'rsis' }
+      ];
+
+      // arrow marker for progression edges
+      svg.append('defs').append('marker')
+        .attr('id', 'arrow').attr('viewBox', '0 -4 8 8')
+        .attr('refX', 8).attr('refY', 0)
+        .attr('markerWidth', 6).attr('markerHeight', 6)
+        .attr('orient', 'auto')
+        .append('path').attr('d', 'M0,-4L8,0L0,4').attr('fill', '#94a3b8');
+
+      var g = svg.append('g');
+
+      // zoom
+      svg.call(d3.zoom().scaleExtent([.3, 3]).on('zoom', function (e) {
+        g.attr('transform', e.transform);
+      }));
+
+      var sim = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(function (d) { return d.id; })
+          .distance(function (d) {
+            var s = d.source.type, t = d.target.type;
+            if (s === 'area' && t === 'area') return 220;
+            if (s === 'area' || t === 'area') return 140;
+            return 90;
+          }).strength(function (d) { return d.prog ? .6 : .3; }))
+        .force('charge', d3.forceManyBody().strength(function (d) {
+          return d.type === 'area' ? -600 : d.type === 'concept' ? -120 : -200;
+        }))
+        .force('center', d3.forceCenter(W / 2, H / 2).strength(.08))
+        .force('collide', d3.forceCollide().radius(function (d) { return d.r + 10; }).strength(.8))
+        .force('x', d3.forceX(W / 2).strength(.04))
+        .force('y', d3.forceY(H / 2).strength(.04));
+
+      var link = g.append('g').selectAll('line').data(links).join('line')
+        .attr('stroke', function (d) { return d.prog ? '#94a3b8' : '#334155'; })
+        .attr('stroke-width', function (d) { return d.prog ? 1.5 : 1; })
+        .attr('stroke-dasharray', function (d) { return d.prog ? '5,3' : null; })
+        .attr('marker-end', function (d) { return d.prog ? 'url(#arrow)' : null; })
+        .attr('opacity', function (d) { return d.prog ? .7 : .45; });
+
+      var node = g.append('g').selectAll('g').data(nodes).join('g')
+        .attr('cursor', 'pointer')
+        .call(d3.drag()
+          .on('start', function (e, d) { if (!e.active) sim.alphaTarget(.3).restart(); d.fx = d.x; d.fy = d.y; })
+          .on('drag', function (e, d) { d.fx = e.x; d.fy = e.y; })
+          .on('end', function (e, d) { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+      node.append('circle')
+        .attr('r', function (d) { return d.r; })
+        .attr('fill', function (d) { return COLORS[d.type]; })
+        .attr('fill-opacity', function (d) { return d.type === 'area' ? .9 : .8; })
+        .attr('stroke', 'rgba(255,255,255,0.15)')
+        .attr('stroke-width', function (d) { return d.type === 'area' ? 2.5 : 1.5; });
+
+      node.each(function (d) {
+        var el = d3.select(this);
+        var lines = d.label.split('\n');
+        var lh = d.type === 'area' ? 13 : 11;
+        var fs = d.type === 'area' ? 11 : (mob ? 9 : 10);
+        var sy = -(lines.length - 1) * lh / 2;
+        var txt = el.append('text')
+          .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+          .attr('fill', '#fff').attr('font-family', 'Inter,sans-serif')
+          .attr('font-weight', d.type === 'area' ? '600' : '500')
+          .attr('font-size', fs + 'px').attr('pointer-events', 'none');
+        lines.forEach(function (ln, i) {
+          txt.append('tspan').attr('x', 0).attr('y', sy + i * lh).text(ln);
+        });
+      });
+
+      var tooltip = document.getElementById('g-tooltip');
+      var ttTitle = document.getElementById('tt-title');
+      var ttType = document.getElementById('tt-type');
+      var ttDesc = document.getElementById('tt-desc');
+      var typeLabels = { area: 'Research Area', paper: 'Publication', project: 'Applied Project', concept: 'Methodology / Concept' };
+      var activeNode = null;
+
+      function showTip(event, d) {
+        ttTitle.textContent = d.label.replace(/\n/g, ' ');
+        ttType.textContent = typeLabels[d.type];
+        ttDesc.textContent = d.desc;
+        tooltip.classList.add('visible');
+        moveTip(event);
+      }
+      function moveTip(event) {
+        var x = event.clientX || (event.touches && event.touches[0] ? event.touches[0].clientX : 0);
+        var y = event.clientY || (event.touches && event.touches[0] ? event.touches[0].clientY : 0);
+        tooltip.style.left = Math.min(x + 14, window.innerWidth - 240) + 'px';
+        tooltip.style.top = (y - 10) + 'px';
+      }
+      function hideTip() { tooltip.classList.remove('visible'); }
+
+      function highlightNode(d) {
+        if (activeNode === d.id) { activeNode = null; resetHighlight(); return; }
+        activeNode = d.id;
+        var connected = new Set([d.id]);
+        links.forEach(function (l) {
+          var sid = l.source.id || l.source, tid = l.target.id || l.target;
+          if (sid === d.id) connected.add(tid);
+          if (tid === d.id) connected.add(sid);
+        });
+        node.selectAll('circle').attr('opacity', function (n) { return connected.has(n.id) ? 1 : .15; });
+        node.selectAll('text').attr('opacity', function (n) { return connected.has(n.id) ? 1 : .1; });
+        link.attr('opacity', function (l) {
+          var sid = l.source.id || l.source, tid = l.target.id || l.target;
+          return (sid === d.id || tid === d.id) ? (l.prog ? .7 : .6) : .05;
+        });
+      }
+      function resetHighlight() {
+        node.selectAll('circle').attr('opacity', 1);
+        node.selectAll('text').attr('opacity', 1);
+        link.attr('opacity', function (d) { return d.prog ? .7 : .45; });
+      }
+
+      node.on('click', function (e, d) { e.stopPropagation(); highlightNode(d); showTip(e, d); })
+        .on('mouseover', showTip).on('mousemove', moveTip).on('mouseout', hideTip)
+        .on('touchstart', function (e, d) { e.preventDefault(); showTip(e, d); highlightNode(d); }, { passive: false })
+        .on('touchend', hideTip);
+
+      svg.on('click', function () { activeNode = null; resetHighlight(); hideTip(); });
+
+      sim.on('tick', function () {
+        link.attr('x1', function (d) { return d.source.x; }).attr('y1', function (d) { return d.source.y; })
+          .attr('x2', function (d) { return d.target.x; }).attr('y2', function (d) { return d.target.y; });
+        node.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      });
+    }
+  </script>
+</body>
+
 </html>
